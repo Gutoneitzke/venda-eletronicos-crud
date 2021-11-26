@@ -5,8 +5,11 @@
 
         $id = $_GET['id'];
 
-        $sqlSelect = "SELECT *  FROM categoria WHERE id=$id";
+        $sqlSelect = "SELECT * FROM cidade WHERE id=$id";
 
+        $sqlEstados = "SELECT * FROM estado";
+
+        $resultEstado = $conexao->query($sqlEstados);
         $result = $conexao->query($sqlSelect);
 
         if($result->num_rows > 0)
@@ -14,6 +17,7 @@
             while($user_data = mysqli_fetch_assoc($result))
             {
                 $nome = $user_data['nome'];
+                $estado_id = $user_data['estado_id'];
             }
         }
     }
@@ -67,18 +71,30 @@
     </style>
 </head>
 <body>
-    <a class="backHome" href="categoria.php" title="Voltar">Voltar</a>
+    <a class="backHome" href="cidade.php" title="Voltar">Voltar</a>
     <br><br>
     <div class="box-all">
             <div class="box-title">
                 <h1>Venda de eletrônicos</h1>
-                <h2>Editar registro - Categorias</h2>
+                <h2>Editar registro - Cidades</h2>
                 <h3>Alunos: Gustavo Neitzke e Gustavo Bedin</h3>
             </div>
             <div class="box-form">
                 <form action="edit.php" method="POST">
-                    <label for="nome">Nome da categoria:</label>
-                    <input type="text" name="nome" id="nome" value="<?php echo $nome; ?>" placeholder="Digite um nome para a categoria">
+                    <label for="nome">Nome da cidade:</label>
+                    <input type="text" name="nome" id="nome" value="<?php echo $nome; ?>" placeholder="Digite um nome para a cidade">
+                    <br><br>
+                    <label for="estado">Estado:</label>
+                    <select name="estado" id="estado" class="input-data">
+                        <?php
+                            while($register_data = mysqli_fetch_assoc($resultEstado))
+                            {
+                                ?>
+                                <option value="<?php echo $register_data['id']?>" <?php echo $register_data['id'] == $estado_id ? 'selected' : '' ?>><?php echo $register_data['nome']?></option>
+                                <?
+                            }
+                        ?>
+                    </select>
                     <br><br>
                     <input type="hidden" name="id" value="<?php echo $id; ?>">
                     <input type="submit" name="submit" value="Enviar" title="Enviar">

@@ -6,12 +6,14 @@
 
         $data = $_GET['search'];
 
-        $sql = "SELECT * FROM categoria WHERE nome LIKE '%$data%' or id LIKE '%$data%'";
+        $sql = "SELECT * FROM cidade WHERE nome LIKE '%$data%' or id LIKE '%$data%'";
+
+        $sql = "SELECT c.id, c.nome, e.nome estado FROM cidade c JOIN estado e ON c.estado_id = e.id WHERE c.nome LIKE '%$data%' or c.id LIKE '%$data%' or e.nome LIKE '%$data%' ORDER BY c.id DESC";
 
     }
     else
     {
-        $sql = "SELECT * FROM categoria ORDER BY id DESC";
+        $sql = "SELECT c.id, c.nome, e.nome estado FROM cidade c JOIN estado e ON c.estado_id = e.id ORDER BY c.id DESC";
     }
     $result = $conexao->query($sql);
 ?>
@@ -21,7 +23,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Categoria | UPF</title>
+    <title>Cidade | UPF</title>
     <style>
         body{
             font-family: Arial, Helvetica, sans-serif;
@@ -121,7 +123,7 @@
     <div class="box-all">
         <div class="box-title">
             <h1>Venda de eletrônicos</h1>
-            <h2>CRUD - Categorias</h2>
+            <h2>CRUD - Cidades</h2>
             <h3>Alunos: Gustavo Neitzke e Gustavo Bedin</h3>
         </div>
         <br><br>
@@ -134,13 +136,14 @@
                         </svg>
                         <input type="search" name="search" placeholder="Digite algo para pesquisar">
                     </div>
-                    <a href="newRegister.html" class="link-action-new" title="Novo registro">+</a>
+                    <a href="newRegister.php" class="link-action-new" title="Novo registro">+</a>
                 </div>
                 <table class="table-list">
                     <thead>
                         <tr>
                             <th>ID</th>
                             <th>NOME</th>
+                            <th>ESTADO</th>
                             <th>...</th>
                         </tr>
                     </thead>
@@ -151,6 +154,7 @@
                                 echo "<tr>";
                                 echo "<td>".$register_data['id']."</td>";
                                 echo "<td>".$register_data['nome']."</td>";
+                                echo "<td>".$register_data['estado']."</td>";
                                 echo "<td class='action'>
                                     <a href='editRegister.php?id=$register_data[id]' class='link-action edit' title='Editar'>
                                         <svg xmlns='http://www.w3.org/2000/svg' width='18' height='18' fill='currentColor' class='bi bi-pencil' viewBox='0 0 16 16'>
@@ -183,7 +187,7 @@
 
     function searchData()
     {
-        window.location = 'categoria.php?search='+search.value;
+        window.location = 'cidade.php?search='+search.value;
     }
     function confirmDelete(id)
     {
@@ -191,7 +195,7 @@
         
         if(state)
         {
-            window.location = 'deleteCategoria.php?id='+id;
+            window.location = 'deleteCidade.php?id='+id;
         }
     }
 </script>

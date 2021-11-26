@@ -7,17 +7,18 @@
 
         $id   = $_POST['id'];
         $nome = $_POST['nome'];
+        $estado_id = $_POST['estado'];
 
-        $sqlSelect = "SELECT *  FROM categoria WHERE id=$id";
+        $sqlSelect = "SELECT *  FROM cidade WHERE id=$id";
 
         $result = $conexao->query($sqlSelect);
 
         if($result->num_rows > 0)
         {
-            $sqlUpdate = "UPDATE categoria SET nome='$nome' WHERE id=$id";
+            $sqlUpdate = "UPDATE cidade SET nome='$nome',estado_id='$estado_id' WHERE id=$id";
 
             $conexao->query($sqlUpdate);
         }
     }
-    header('Location: categoria.php');
+    header('Location: cidade.php');
 ?>
