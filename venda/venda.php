@@ -6,12 +6,23 @@
 
         $data = $_GET['search'];
 
-        $sql = "SELECT v.id, v.nome, v.email, v.telefone, v.data_nasc, v.sexo, v.endereco, c.nome cidade FROM vendedor v JOIN cidade c ON v.cidade_id = c.id WHERE v.nome LIKE '%$data%' or v.id LIKE '%$data%' or c.nome LIKE '%$data%' ORDER BY v.id DESC";
+        $sql = "SELECT v.id,v.data,ve.nome vendedor,c.nome cliente, COUNT(phv.produto_id) qtdProdutos, SUM(phv.preco_venda) preco_venda
+        FROM venda v
+        JOIN vendedor ve ON ve.id = v.vendedor_id
+        JOIN cliente c ON c.id    = v.cliente_id
+        JOIN produto_has_venda phv ON phv.venda_id = v.id
+        WHERE v.data LIKE '%$data%' or v.id LIKE '%$data%' or ve.nome LIKE '%$data%' or c.nome LIKE '%$data%'
+        group by 1 order by v.id desc";
 
     }
     else
     {
-        $sql = "SELECT v.id, v.nome, v.email, v.telefone, v.data_nasc, v.sexo, v.endereco, c.nome cidade FROM vendedor v JOIN cidade c ON v.cidade_id = c.id ORDER BY v.id DESC";
+        $sql = "SELECT v.id,v.data,ve.nome vendedor,c.nome cliente, COUNT(phv.produto_id) qtdProdutos, SUM(phv.preco_venda) preco_venda
+        FROM venda v
+        JOIN vendedor ve ON ve.id = v.vendedor_id
+        JOIN cliente c ON c.id    = v.cliente_id
+        JOIN produto_has_venda phv ON phv.venda_id = v.id
+        group by 1 order by v.id desc";
     }
     $result = $conexao->query($sql);
 ?>
@@ -21,7 +32,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vendedor | UPF</title>
+    <title>Venda | UPF</title>
     <style>
         body{
             font-family: Arial, Helvetica, sans-serif;
@@ -41,7 +52,7 @@
             background-color: rgba(0,0,0,0.5);
             border-radius: 10px;
             padding: 15px;
-            width: 80%;
+            width: 70%;
         }
         .table-list{
             width: 100%;
@@ -67,7 +78,7 @@
             color: #fff;
             padding: 8px;
             border-radius: 50%;
-            width: 1.8%;
+            width: 2.5%;
             font-weight: bold;
             font-size: 20px;
             align-items: center;
@@ -121,7 +132,7 @@
     <div class="box-all">
         <div class="box-title">
             <h1>Venda de eletrônicos</h1>
-            <h2>CRUD - Vendedor</h2>
+            <h2>CRUD - Vendas</h2>
             <h3>Alunos: Gustavo Neitzke e Gustavo Bedin</h3>
         </div>
         <br><br>
@@ -140,13 +151,11 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>NOME</th>
-                            <th>EMAIL</th>
-                            <th>TELEFONE</th>
-                            <th>DATA DE NASCIMENTO</th>
-                            <th>SEXO</th>
-                            <th>ENDEREÇO</th>
-                            <th>CIDADE</th>
+                            <th>DATA</th>
+                            <th>VENDEDOR</th>
+                            <th>CLIENTE</th>
+                            <th>PRODUTOS</th>
+                            <th>PREÇO</th>
                             <th>...</th>
                         </tr>
                     </thead>
@@ -156,13 +165,11 @@
                             {
                                 echo "<tr>";
                                 echo "<td>".$register_data['id']."</td>";
-                                echo "<td>".$register_data['nome']."</td>";
-                                echo "<td>".$register_data['email']."</td>";
-                                echo "<td>".$register_data['telefone']."</td>";
-                                echo "<td>".$register_data['data_nasc']."</td>";
-                                echo "<td>".$register_data['sexo']."</td>";
-                                echo "<td>".$register_data['endereco']."</td>";
-                                echo "<td>".$register_data['cidade']."</td>";
+                                echo "<td>".$register_data['data']."</td>";
+                                echo "<td>".$register_data['vendedor']."</td>";
+                                echo "<td>".$register_data['cliente']."</td>";
+                                echo "<td>".$register_data['qtdProdutos']."</td>";
+                                echo "<td>R$ ".$register_data['preco_venda']."</td>";
                                 echo "<td class='action'>
                                     <a href='editRegister.php?id=$register_data[id]' class='link-action edit' title='Editar'>
                                         <svg xmlns='http://www.w3.org/2000/svg' width='18' height='18' fill='currentColor' class='bi bi-pencil' viewBox='0 0 16 16'>
@@ -195,7 +202,7 @@
 
     function searchData()
     {
-        window.location = 'vendedor.php?search='+search.value;
+        window.location = 'venda.php?search='+search.value;
     }
     function confirmDelete(id)
     {
@@ -203,7 +210,7 @@
         
         if(state)
         {
-            window.location = 'deleteVendedor.php?id='+id;
+            window.location = 'deleteVenda.php?id='+id;
         }
     }
 </script>

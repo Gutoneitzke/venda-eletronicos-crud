@@ -48,7 +48,7 @@
             background-color: rgba(0,0,0,0.5);
             border-radius: 10px;
             padding: 15px;
-            width: 50%;
+            width: 70%;
         }
         .table-list{
             width: 100%;
@@ -148,8 +148,8 @@
                         <tr>
                             <th>ID</th>
                             <th>NOME</th>
-                            <th>VALOR</th>
                             <th>DESCRIÇÃO</th>
+                            <th>VALOR</th>
                             <th>QUANTIDADE</th>
                             <th>VENDEDOR</th>
                             <th>CATEGORIA</th>
@@ -164,7 +164,7 @@
                                 echo "<td>".$register_data['id']."</td>";
                                 echo "<td>".$register_data['nome']."</td>";
                                 echo "<td>".$register_data['descricao']."</td>";
-                                echo "<td>".$register_data['valor']."</td>";
+                                echo "<td>R$ ".$register_data['valor']."</td>";
                                 echo "<td>".$register_data['quantidade']."</td>";
                                 echo "<td>".$register_data['vendedor']."</td>";
                                 echo "<td>".$register_data['categoria']."</td>";
