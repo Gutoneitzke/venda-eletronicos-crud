@@ -6,12 +6,12 @@
 
         $data = $_GET['search'];
 
-        $sql = "SELECT v.id, v.nome, v.email, v.telefone, v.data_nasc, v.sexo, v.endereco, c.nome cidade FROM vendedor v JOIN cidade c ON v.cidade_id = c.id WHERE v.nome LIKE '%$data%' or v.id LIKE '%$data%' or c.nome LIKE '%$data%' ORDER BY v.id DESC";
+        $sql = "SELECT cli.id, cli.nome, cli.email, cli.telefone, cli.data_nasc, cli.sexo, cli.endereco, c.nome cidade FROM cliente cli JOIN cidade c ON cli.cidade_id = c.id WHERE cli.nome LIKE '%$data%' or cli.id LIKE '%$data%' or c.nome LIKE '%$data%' ORDER BY cli.id DESC";
 
     }
     else
     {
-        $sql = "SELECT v.id, v.nome, v.email, v.telefone, v.data_nasc, v.sexo, v.endereco, c.nome cidade FROM vendedor v JOIN cidade c ON v.cidade_id = c.id ORDER BY v.id DESC";
+        $sql = "SELECT cli.id, cli.nome, cli.email, cli.telefone, cli.data_nasc, cli.sexo, cli.endereco, c.nome cidade FROM cliente cli JOIN cidade c ON cli.cidade_id = c.id ORDER BY cli.id DESC";
     }
     $result = $conexao->query($sql);
 ?>
@@ -21,7 +21,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vendedor | UPF</title>
+    <title>Clientes | UPF</title>
     <style>
         body{
             font-family: Arial, Helvetica, sans-serif;
@@ -121,7 +121,7 @@
     <div class="box-all">
         <div class="box-title">
             <h1>Venda de eletrônicos</h1>
-            <h2>CRUD - Vendedor</h2>
+            <h2>CRUD - Clientes</h2>
             <h3>Alunos: Gustavo Neitzke e Gustavo Bedin</h3>
         </div>
         <br><br>
@@ -195,7 +195,7 @@
 
     function searchData()
     {
-        window.location = 'vendedor.php?search='+search.value;
+        window.location = 'cliente.php?search='+search.value;
     }
     function confirmDelete(id)
     {
@@ -203,7 +203,7 @@
         
         if(state)
         {
-            window.location = 'deleteVendedor.php?id='+id;
+            window.location = 'deleteCliente.php?id='+id;
         }
     }
 </script>

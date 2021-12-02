@@ -6,8 +6,6 @@
 
         $data = $_GET['search'];
 
-        $sql = "SELECT * FROM estado WHERE nome LIKE '%$data%' or id LIKE '%$data%'";
-
         $sql = "SELECT e.id, e.nome, p.nome pais FROM estado e JOIN pais p ON e.pais_id = p.id WHERE e.nome LIKE '%$data%' or e.id LIKE '%$data%' or p.nome LIKE '%$data%' ORDER BY e.id DESC";
 
     }
