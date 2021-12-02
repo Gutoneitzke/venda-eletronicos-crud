@@ -41,7 +41,7 @@
             background-color: rgba(0,0,0,0.5);
             border-radius: 10px;
             padding: 15px;
-            width: 70%;
+            width: 50%;
         }
         .table-list{
             width: 100%;
