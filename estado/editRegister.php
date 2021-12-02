@@ -5,11 +5,11 @@
 
         $id = $_GET['id'];
 
-        $sqlSelect = "SELECT * FROM cidade WHERE id=$id";
+        $sqlSelect = "SELECT * FROM estado WHERE id=$id";
 
-        $sqlEstados = "SELECT * FROM estado";
+        $sqlPais = "SELECT * FROM pais";
 
-        $resultEstado = $conexao->query($sqlEstados);
+        $resultPais = $conexao->query($sqlPais);
         $result = $conexao->query($sqlSelect);
 
         if($result->num_rows > 0)
@@ -17,7 +17,7 @@
             while($user_data = mysqli_fetch_assoc($result))
             {
                 $nome = $user_data['nome'];
-                $estado_id = $user_data['estado_id'];
+                $pais_id = $user_data['pais_id'];
             }
         }
     }
@@ -71,26 +71,26 @@
     </style>
 </head>
 <body>
-    <a class="backHome" href="cidade.php" title="Voltar">Voltar</a>
+    <a class="backHome" href="estado.php" title="Voltar">Voltar</a>
     <br><br>
     <div class="box-all">
             <div class="box-title">
                 <h1>Venda de eletrônicos</h1>
-                <h2>Editar registro - Cidades</h2>
+                <h2>Editar registro - Estados</h2>
                 <h3>Alunos: Gustavo Neitzke e Gustavo Bedin</h3>
             </div>
             <div class="box-form">
                 <form action="edit.php" method="POST">
-                    <label for="nome">Nome da cidade:</label>
+                    <label for="nome">Nome do estado:</label>
                     <input type="text" class="input-data" name="nome" id="nome" value="<?php echo $nome; ?>" placeholder="Digite um nome para a cidade">
                     <br><br>
-                    <label for="estado">Estado:</label>
-                    <select name="estado" id="estado" class="input-data">
+                    <label for="pais">País:</label>
+                    <select name="pais" id="pais" class="input-data">
                         <?php
-                            while($register_data = mysqli_fetch_assoc($resultEstado))
+                            while($register_data = mysqli_fetch_assoc($resultPais))
                             {
                                 ?>
-                                <option value="<?php echo $register_data['id']?>" <?php echo $register_data['id'] == $estado_id ? 'selected' : '' ?>><?php echo $register_data['nome']?></option>
+                                <option value="<?php echo $register_data['id']?>" <?php echo $register_data['id'] == $pais_id ? 'selected' : '' ?>><?php echo $register_data['nome']?></option>
                                 <?
                             }
                         ?>
