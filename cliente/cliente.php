@@ -6,7 +6,7 @@
 
         $data = $_GET['search'];
 
-        $sql = "SELECT cli.id, cli.nome, cli.email, cli.telefone, cli.data_nasc, cli.sexo, cli.endereco, c.nome cidade FROM cliente cli JOIN cidade c ON cli.cidade_id = c.id WHERE cli.nome LIKE '%$data%' or cli.id LIKE '%$data%' or c.nome LIKE '%$data%' ORDER BY cli.id DESC";
+        $sql  = "SELECT cli.id, cli.nome, cli.email, cli.telefone, cli.data_nasc, cli.sexo, cli.endereco, c.nome cidade FROM cliente cli JOIN cidade c ON cli.cidade_id = c.id WHERE cli.nome LIKE '%$data%' or cli.id LIKE '%$data%' or c.nome LIKE '%$data%' ORDER BY cli.id DESC";
 
     }
     else
@@ -205,6 +205,10 @@
         {
             window.location = 'deleteCliente.php?id='+id;
         }
+    }
+    if(location.search.split('error=')[1] == 1)
+    {
+        window.onload = function () {alert('Registro já existente')};
     }
 </script>
 </html>

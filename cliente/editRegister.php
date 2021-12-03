@@ -87,27 +87,27 @@
             <div class="box-form">
                 <form action="edit.php" method="POST">
                 <label for="nome">Nome do cliente:</label>
-                    <input type="text" class="input-data" name="nome" id="nome" placeholder="Digite um nome para o cliente" value="<?php echo $nome ?>">
+                    <input type="text" class="input-data" name="nome" id="nome" placeholder="Digite um nome para o cliente" value="<?php echo $nome ?>" required>
                     <br><br>
                     <label for="email">Email:</label>
-                    <input type="text" class="input-data" name="email" id="email" placeholder="Digite um email" value="<?php echo $email ?>">
+                    <input type="text" class="input-data" name="email" id="email" placeholder="Digite um email" value="<?php echo $email ?>" required>
                     <br><br>
                     <label for="telefone">Telefone:</label>
-                    <input type="number" class="input-data" name="telefone" id="telefone" placeholder="Digite um telefone" value="<?php echo $telefone ?>">
+                    <input type="number" class="input-data" name="telefone" id="telefone" placeholder="Digite um telefone" value="<?php echo $telefone ?>" required>
                     <br><br>
                     <label for="data_nasc">Data de nascimento:</label>
-                    <input type="date" class="input-data" name="data_nasc" id="data_nasc" value="<?php echo $data_nasc ?>">
+                    <input type="date" class="input-data" name="data_nasc" id="data_nasc" value="<?php echo $data_nasc ?>" required>
                     <br><br>
                     <label>Sexo:</label>
                     <br><br>
-                    <input type="radio" class="input-data" name="sexo" id="sexo_f" <?php echo $sexo == 'F' ? 'checked' : '' ?> value="F">
+                    <input type="radio" class="input-data" name="sexo" id="sexo_f" <?php echo $sexo == 'F' ? 'checked' : '' ?> value="F" required>
                     <label for="sexo_f">Feminino</label>
                     <br><br>
-                    <input type="radio" class="input-data" name="sexo" id="sexo_m" <?php echo $sexo == 'M' ? 'checked' : '' ?> value="M">
+                    <input type="radio" class="input-data" name="sexo" id="sexo_m" <?php echo $sexo == 'M' ? 'checked' : '' ?> value="M" required>
                     <label for="sexo_m">Masculino</label>
                     <br><br>
                     <label for="endereco">Endereço:</label>
-                    <input type="text" class="input-data" name="endereco" id="endereco" value="<?php echo $endereco ?>">
+                    <input type="text" class="input-data" name="endereco" id="endereco" value="<?php echo $endereco ?>" required>
                     <br><br>
                     <label for="cidade">Cidade:</label>
                     <select name="cidade" id="cidade" class="input-data">

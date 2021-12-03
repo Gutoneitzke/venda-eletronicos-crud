@@ -196,5 +196,9 @@
             window.location = 'deleteEstado.php?id='+id;
         }
     }
+    if(location.search.split('error=')[1] == 1)
+    {
+        window.onload = function () {alert('Registro já existente')};
+    }
 </script>
 </html>

@@ -5,8 +5,7 @@
     {
 
         $data = $_GET['search'];
-
-        $sql = "SELECT * FROM categoria WHERE nome LIKE '%$data%' or id LIKE '%$data%'";
+        $sql  = "SELECT * FROM categoria WHERE nome LIKE '%$data%' or id LIKE '%$data%'";
 
     }
     else
@@ -193,6 +192,10 @@
         {
             window.location = 'deleteCategoria.php?id='+id;
         }
+    }
+    if(location.search.split('error=')[1] == 1)
+    {
+        window.onload = function () {alert('Registro já existente')};
     }
 </script>
 </html>

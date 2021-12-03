@@ -7,7 +7,7 @@
 
         $sqlSelect = "SELECT * FROM produto WHERE id=$id";
 
-        $sqlVendedor = "SELECT * FROM vendedor";
+        $sqlVendedor  = "SELECT * FROM vendedor";
         $sqlCategoria = "SELECT * FROM categoria";
 
         $resultVendedor = $conexao->query($sqlVendedor);
@@ -88,16 +88,16 @@
             <div class="box-form">
                 <form action="edit.php" method="POST">
                     <label for="nome">Nome do produto:</label>
-                    <input type="text" class="input-data" name="nome" id="nome" value="<?php echo $nome ?>" placeholder="Digite um nome para o produto">
+                    <input type="text" class="input-data" name="nome" id="nome" value="<?php echo $nome ?>" placeholder="Digite um nome para o produto" required>
                     <br><br>
                     <label for="descricao">Descrição:</label>
-                    <input type="text" class="input-data" name="descricao" id="descricao" value="<?php echo $descricao ?>" placeholder="Digite uma descricao">
+                    <input type="text" class="input-data" name="descricao" id="descricao" value="<?php echo $descricao ?>" placeholder="Digite uma descricao" required>
                     <br><br>
                     <label for="valor">Valor:</label>
-                    <input type="number" class="input-data" name="valor" id="valor" value="<?php echo $valor ?>" placeholder="Digite um valor">
+                    <input type="number" class="input-data" name="valor" id="valor" value="<?php echo $valor ?>" placeholder="Digite um valor" required>
                     <br><br>
                     <label for="quantidade">Quantidade:</label>
-                    <input type="number" class="input-data" name="quantidade" id="quantidade" value="<?php echo $quantidade ?>" placeholder="Digite uma quantidade">
+                    <input type="number" class="input-data" name="quantidade" id="quantidade" value="<?php echo $quantidade ?>" placeholder="Digite uma quantidade" required>
                     <br><br>
                     <label for="vendedor">Vendedor:</label>
                     <select name="vendedor" id="vendedor" class="input-data">

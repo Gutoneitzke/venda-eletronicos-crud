@@ -7,16 +7,24 @@
 
         $sqlSelect = "SELECT * FROM venda WHERE id=$id";
 
-        $sqlVendedor = "SELECT * FROM vendedor";
-        $sqlCliente = "SELECT * FROM cliente";
-        $sqlProduto = "SELECT * FROM produto";
+        $sqlVendedor      = "SELECT * FROM vendedor";
+        $sqlCliente       = "SELECT * FROM cliente";
+        $sqlProduto       = "SELECT * FROM produto";
         $sqlProdutosVenda = "SELECT * FROM produto_has_venda WHERE venda_id=$id";
 
         $resultVendedor      = $conexao->query($sqlVendedor);
         $resultCliente       = $conexao->query($sqlCliente);
-        $resultProduto       = $conexao->query($sqlProduto);
+        $resultProdutos      = $conexao->query($sqlProduto);
         $resultProdutosVenda = $conexao->query($sqlProdutosVenda);
-        $result = $conexao->query($sqlSelect);
+        $result              = $conexao->query($sqlSelect);
+        $resultProduto       = $conexao->query($sqlProduto);
+        $produtosId          = array();
+        while($produtos = mysqli_fetch_assoc($resultProdutos))
+        {
+            // início da lógica de selecionar os produtos da venda
+            // ainda não finalizada...
+            array_push($produtosId , $produtos['id']);
+        }
 
         if($result->num_rows > 0)
         {
@@ -117,7 +125,8 @@
                     <select name="produto[]" id="produto" class="input-data" multiple required>
                         <?php
                             while($register_data = mysqli_fetch_assoc($resultProduto))
-                            {?>
+                            {
+                            ?>
                                 <option value='<?php echo $register_data['id']?>'>
                                 <?php echo $register_data['nome']?></option>
                             <?php 

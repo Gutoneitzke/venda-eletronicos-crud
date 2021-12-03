@@ -82,7 +82,7 @@
             <div class="box-form">
                 <form action="edit.php" method="POST">
                     <label for="nome">Nome da cidade:</label>
-                    <input type="text" class="input-data" name="nome" id="nome" value="<?php echo $nome; ?>" placeholder="Digite um nome para a cidade">
+                    <input type="text" class="input-data" name="nome" id="nome" value="<?php echo $nome; ?>" placeholder="Digite um nome para a cidade" required>
                     <br><br>
                     <label for="estado">Estado:</label>
                     <select name="estado" id="estado" class="input-data">

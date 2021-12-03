@@ -8,6 +8,14 @@
         $id   = $_POST['id'];
         $nome = $_POST['nome'];
 
+        $sqlSelect = "SELECT * FROM pais WHERE nome='$nome'";
+        $result = $conexao->query($sqlSelect);
+        if($result->num_rows > 0)
+        {
+            header('Location: pais.php?error=1');
+            return;
+        }
+
         $sqlSelect = "SELECT *  FROM pais WHERE id=$id";
 
         $result = $conexao->query($sqlSelect);

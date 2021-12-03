@@ -78,7 +78,7 @@
             <div class="box-form">
                 <form action="edit.php" method="POST">
                     <label for="nome">Nome do país:</label>
-                    <input type="text" name="nome" id="nome" value="<?php echo $nome; ?>" placeholder="Digite um nome para o país">
+                    <input type="text" name="nome" id="nome" value="<?php echo $nome; ?>" placeholder="Digite um nome para o país" required>
                     <br><br>
                     <input type="hidden" name="id" value="<?php echo $id; ?>">
                     <input type="submit" name="submit" value="Enviar" title="Enviar">

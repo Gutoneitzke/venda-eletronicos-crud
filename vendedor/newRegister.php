@@ -4,7 +4,7 @@
 
     $sqlSelect = "SELECT *  FROM cidade";
 
-    $result = $conexao->query($sqlSelect);
+    $result    = $conexao->query($sqlSelect);
 
 ?>
 
@@ -68,27 +68,27 @@
             <div class="box-form">
                 <form action="insert.php" method="POST">
                     <label for="nome">Nome do vendedor:</label>
-                    <input type="text" class="input-data" name="nome" id="nome" placeholder="Digite um nome para o vendedor">
+                    <input type="text" class="input-data" name="nome" id="nome" placeholder="Digite um nome para o vendedor" required>
                     <br><br>
                     <label for="email">Email:</label>
-                    <input type="text" class="input-data" name="email" id="email" placeholder="Digite um email">
+                    <input type="text" class="input-data" name="email" id="email" placeholder="Digite um email" required>
                     <br><br>
                     <label for="telefone">Telefone:</label>
-                    <input type="number" class="input-data" name="telefone" id="telefone" placeholder="Digite um telefone">
+                    <input type="number" class="input-data" name="telefone" id="telefone" placeholder="Digite um telefone" required>
                     <br><br>
                     <label for="data_nasc">Data de nascimento:</label>
-                    <input type="date" class="input-data" name="data_nasc" id="data_nasc">
+                    <input type="date" class="input-data" name="data_nasc" id="data_nasc" required>
                     <br><br>
                     <label>Sexo:</label>
                     <br><br>
-                    <input type="radio" class="input-data" name="sexo" id="sexo_f" value="F">
+                    <input type="radio" class="input-data" name="sexo" id="sexo_f" value="F" required>
                     <label for="sexo_f">Feminino</label>
                     <br><br>
-                    <input type="radio" class="input-data" name="sexo" id="sexo_m" value="M">
+                    <input type="radio" class="input-data" name="sexo" id="sexo_m" value="M" required>
                     <label for="sexo_m">Masculino</label>
                     <br><br>
                     <label for="endereco">Endereço:</label>
-                    <input type="text" class="input-data" name="endereco" id="endereco">
+                    <input type="text" class="input-data" name="endereco" id="endereco" required>
                     <br><br>
                     <label for="cidade">Selecione a cidade:</label>
                     <select name="cidade" id="cidade" class="input-data">

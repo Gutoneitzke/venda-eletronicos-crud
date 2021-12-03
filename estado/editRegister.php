@@ -10,7 +10,7 @@
         $sqlPais = "SELECT * FROM pais";
 
         $resultPais = $conexao->query($sqlPais);
-        $result = $conexao->query($sqlSelect);
+        $result     = $conexao->query($sqlSelect);
 
         if($result->num_rows > 0)
         {
@@ -82,7 +82,7 @@
             <div class="box-form">
                 <form action="edit.php" method="POST">
                     <label for="nome">Nome do estado:</label>
-                    <input type="text" class="input-data" name="nome" id="nome" value="<?php echo $nome; ?>" placeholder="Digite um nome para a cidade">
+                    <input type="text" class="input-data" name="nome" id="nome" value="<?php echo $nome; ?>" placeholder="Digite um nome para a cidade" required>
                     <br><br>
                     <label for="pais">País:</label>
                     <select name="pais" id="pais" class="input-data">

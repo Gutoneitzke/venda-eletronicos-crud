@@ -2,10 +2,10 @@
 
     include_once('../config.php');
 
-    $sqlSelectVendedor = "SELECT *  FROM vendedor";
+    $sqlSelectVendedor  = "SELECT *  FROM vendedor";
     $sqlSelectCategoria = "SELECT *  FROM categoria";
 
-    $resultVendedor = $conexao->query($sqlSelectVendedor);
+    $resultVendedor  = $conexao->query($sqlSelectVendedor);
     $resultCategoria = $conexao->query($sqlSelectCategoria);
 
 ?>
@@ -70,16 +70,16 @@
             <div class="box-form">
                 <form action="insert.php" method="POST">
                     <label for="nome">Nome do produto:</label>
-                    <input type="text" class="input-data" name="nome" id="nome" placeholder="Digite um nome para o produto">
+                    <input type="text" class="input-data" name="nome" id="nome" placeholder="Digite um nome para o produto" required>
                     <br><br>
                     <label for="descricao">Descrição:</label>
-                    <input type="text" class="input-data" name="descricao" id="descricao" placeholder="Digite uma descricao">
+                    <input type="text" class="input-data" name="descricao" id="descricao" placeholder="Digite uma descricao" required>
                     <br><br>
                     <label for="valor">Valor:</label>
-                    <input type="number" class="input-data" name="valor" id="valor" placeholder="Digite um valor">
+                    <input type="number" class="input-data" name="valor" id="valor" placeholder="Digite um valor" required>
                     <br><br>
                     <label for="quantidade">Quantidade:</label>
-                    <input type="number" class="input-data" name="quantidade" id="quantidade" placeholder="Digite uma quantidade">
+                    <input type="number" class="input-data" name="quantidade" id="quantidade" placeholder="Digite uma quantidade" required>
                     <br><br>
                     <label for="vendedor">Selecione o vendedor:</label>
                     <select name="vendedor" id="vendedor" class="input-data">

@@ -6,7 +6,7 @@
 
         $data = $_GET['search'];
 
-        $sql = "SELECT c.id, c.nome, e.nome estado FROM cidade c JOIN estado e ON c.estado_id = e.id WHERE c.nome LIKE '%$data%' or c.id LIKE '%$data%' or e.nome LIKE '%$data%' ORDER BY c.id DESC";
+        $sql  = "SELECT c.id, c.nome, e.nome estado FROM cidade c JOIN estado e ON c.estado_id = e.id WHERE c.nome LIKE '%$data%' or c.id LIKE '%$data%' or e.nome LIKE '%$data%' ORDER BY c.id DESC";
 
     }
     else
@@ -195,6 +195,10 @@
         {
             window.location = 'deleteCidade.php?id='+id;
         }
+    }
+    if(location.search.split('error=')[1] == 1)
+    {
+        window.onload = function () {alert('Registro já existente')};
     }
 </script>
 </html>
